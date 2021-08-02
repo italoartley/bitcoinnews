@@ -1,0 +1,6 @@
+package com.bitcoinnews.bitcoinnews;
+
+import io.flutter.embedding.android.FlutterActivity;
+
+public class MainActivity extends FlutterActivity {
+}
