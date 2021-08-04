@@ -1,7 +1,13 @@
+
 import 'package:flutter/material.dart';
-import 'package:bitcoinnews/pages/login.page.dart';
+import 'package:bitcoinnews/pages/login/login.page.dart';
+import 'package:bitcoinnews/pages/signup/signup-service.dart';
 
 class SignupPage extends StatelessWidget {
+  TextEditingController _nameInputController = TextEditingController();
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +62,7 @@ class SignupPage extends StatelessWidget {
               height: 20,
             ),
             TextFormField(
+              controller: _nameInputController,
               // autofocus: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
@@ -74,9 +81,10 @@ class SignupPage extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+              controller: _mailInputController,
               // autofocus: true,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: InputDecoration(suffixIcon: Icon(Icons.mail_outline,color: Colors.white),
                 labelText: "E-mail",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -92,10 +100,11 @@ class SignupPage extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+                controller: _passwordInputController,
               // autofocus: true,
               keyboardType: TextInputType.text,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: InputDecoration(suffixIcon: Icon(Icons.remove_red_eye_outlined,color: Colors.white),
                 labelText: "Senha",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -135,7 +144,9 @@ class SignupPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _doSignUp();
+                  },
                 ),
               ),
             ),
@@ -169,4 +180,22 @@ class SignupPage extends StatelessWidget {
       ),
     );
   }
+  void _doSignUp(){
+    if(_formatKey.currentState.validate()) {
+      SignUpService().signUp(_mailInputController.text, _passwordInputController.text);
+      print("Válido");
+    }else{
+      print("Inválido");
+    }
+
+  }
+  //void _saveUser(LoginModel user) async{
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    //prefs.setString("Login_User", json.encode(user.toJson()),
+    //);
+  //}
+}
+
+class _formatKey {
+  static var currentState;
 }

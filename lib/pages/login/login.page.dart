@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bitcoinnews/pages/home.page.dart';
-import 'package:bitcoinnews/pages/signup.page.dart';
+import 'package:bitcoinnews/pages/home/home.page.dart';
 import 'package:bitcoinnews/pages/reset-password.page.dart';
+import 'package:bitcoinnews/pages/login/login.service.dart';
+import 'package:bitcoinnews/pages/signup/signup.page.dart';
 
 class LoginPage extends StatelessWidget {
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +28,10 @@ class LoginPage extends StatelessWidget {
               height: 1,
             ),
             TextFormField(
+              controller: _mailInputController,
             // autofocus: true,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: InputDecoration(suffixIcon: Icon(Icons.mail_outline,color: Colors.white),
                 labelText: "E-mail",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -32,17 +39,18 @@ class LoginPage extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              style: TextStyle(fontSize: 20,color: Colors.orangeAccent,
+              style: TextStyle(fontSize: 20,color: Colors.white,
               ),
             ),
             SizedBox(
               height: 1,
             ),
             TextFormField(
+              controller: _passwordInputController,
             // autofocus: true,
               keyboardType: TextInputType.text,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: InputDecoration(suffixIcon: Icon(Icons.remove_red_eye_outlined,color: Colors.white),
                 labelText: "Senha",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -50,7 +58,7 @@ class LoginPage extends StatelessWidget {
                   fontSize: 20,
                   ),
               ),
-              style: TextStyle(fontSize: 20,color: Colors.orangeAccent
+              style: TextStyle(fontSize: 20,color: Colors.white
               ),
             ),
             Container(height: 40,
@@ -108,6 +116,7 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
+                    _doLogin();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -148,4 +157,14 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
+  void _doLogin() async {
+    if (_formKey.currentState!.validate()) {
+      LoginService()
+          .login(_mailInputController.text, _passwordInputController.text);
+      print("Válido");
+    } else {
+      print("invalido");
+    }
+  }
+  }
+

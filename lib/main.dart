@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bitcoinnews/pages/login.page.dart';
-import 'package:bitcoinnews/pages/signup.page.dart';
+import 'package:bitcoinnews/pages/login/login.page.dart';
 
 void main() => runApp(MyApp());
 
