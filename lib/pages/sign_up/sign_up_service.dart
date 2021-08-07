@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bitcoinnews/routes.dart';
+import 'package:bitcoinnews/shared/constants/routes.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpService {
