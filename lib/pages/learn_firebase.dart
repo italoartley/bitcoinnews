@@ -11,7 +11,7 @@ class LearnFirebase extends StatefulWidget {
 class _LearnFirebaseState extends State<LearnFirebase> {
   List<String> listStrings = <String>["Nenhum registro carregado."];
   Uri url =
-      Uri.https("gym-app-2da6c-default-rtdb.firebaseio.com", "/words.json");
+      Uri.https("bitcoinnews-9ed6c-default-rtdb.firebaseio.com", "/words.json");
   TextEditingController _controller = TextEditingController();
   bool _isLoading = false;
 
@@ -66,7 +66,6 @@ class _LearnFirebaseState extends State<LearnFirebase> {
     setState(() {
       this._isLoading = true;
     });
-
     http
         .post(
       url,
