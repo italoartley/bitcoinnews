@@ -242,22 +242,5 @@ class _SignUpPageState extends State<SignUpPage> {
       print("invalido");
     }
 
-    // LoginModel newUser = LoginModel(
-    //   name: _nameInputController.text,
-    //   mail: _mailInputController.text,
-    //   password: _passwordInputController.text,
-    //   keepOn: true,
-    // );
-
-    // _saveUser(newUser);
   }
-
-  // ignore: unused_element
-  //void _saveUser(LoginModel user) async {
-    //SharedPreferences prefs = await SharedPreferences.getInstance();
-    //prefs.setString(
-      //PreferencesKeys.activeUser,
-      //json.encode(user.toJson()),
-    //);
-  //}
 }
