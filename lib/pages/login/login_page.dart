@@ -64,8 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                           return "Esse e-mail parece curto demais";
                         } else {
                           if (!value.contains("@")) {
-                          return "Esse e-mail está meio estranho, não?";
-                        }
+                            return "Esse e-mail está meio estranho, não?";
+                          }
                         }
                         return null;
                       },
@@ -190,7 +190,10 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "Ainda não tem uma conta?",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 11, color: Colors.white,),
+                style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.white,
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -222,6 +225,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
       LoginService()
           .login(_mailInputController.text, _passwordInputController.text);
+      Navigator.of(context).pushNamed('/home');
     } else {
       print("invalido");
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bitcoinnews/pages/login/login_page.dart';
+import 'package:bitcoinnews/pages/views/principal.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,10 +12,13 @@ class MyApp extends StatelessWidget {
       title: 'BitcoinNews',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primaryColor: Colors.black,
       ),
-      home: LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/home': (context) => Principal(),
+      },
     );
   }
 }
-
