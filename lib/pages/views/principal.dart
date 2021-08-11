@@ -11,7 +11,7 @@ class Principal extends StatefulWidget {
 }
 
 class _PrincipalState extends State<Principal> {
-  List<ArticleModel> articles = <ArticleModel>[];
+  List<ArticleModel> articles = new List<ArticleModel>();
 
   bool _loading = true;
 
